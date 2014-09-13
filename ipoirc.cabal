@@ -1,0 +1,23 @@
+name: ipoirc
+version: 0.0.1
+cabal-version: >=1.2
+build-type: Simple
+license: AllRightsReserved
+license-file: ""
+synopsis: ipoirc
+data-dir: ""
+extra-source-files: cbits/help.h
+ 
+executable ipoirc
+    build-depends: base >=4 && <5, base64-bytestring -any,
+                   bytestring -any, hashtables -any, random -any, simpleirc -any,
+                   split -any, unix >=2.3.0.0
+    main-is: Main.hs
+    buildable: True
+    cpp-options: -DCALLCONV=ccall
+    cc-options: -Wall -D LINUX
+    c-sources: cbits/help-linux.c
+    hs-source-dirs: src
+    other-modules: Protocol TunTap Shared Tap Irc
+    ghc-options: -threaded -Wall
+ 
